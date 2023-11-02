@@ -1,15 +1,13 @@
-﻿//Задайте прямоугольный двумерный массив. Напишите программу, 
-//которая будет находить строку с наименьшей суммой элементов.
-using Func;
-int[,] GenRanArrx2(int I, int J){
+﻿int[,] GenIntRanArrx2(int I, int J, int min, int max){
     int[,] arr = new int[I,J];
     for(int i = 0;i < arr.GetLength(0);i++){
         for(int j = 0; j < arr.GetLength(1);j++){
-            arr[i,j] = new Random().Next(0,21);
+            arr[i,j] = new Random().Next(min,max);
         }
     }
     return arr;
 }
+
 void PrintArr(int[,] arr){
     for( int i = 0;i < arr.GetLength(0);i++){
         for(int j = 0; j < arr.GetLength(1);j++){
@@ -18,7 +16,12 @@ void PrintArr(int[,] arr){
         Console.WriteLine();
     }
 }
+
 int[] CopyArrString(int[,] arr){
+
+
+
+    
     int[] array = new int[arr.GetLength(1)];
     for(int x = 0; x < arr.GetLength(1); x++){
         array[x] = arr[0,x];
@@ -26,16 +29,9 @@ int[] CopyArrString(int[,] arr){
     return array;
 }
 
-Console.WriteLine("Введите количество строк: ");
-int a = int.Parse(Console.ReadLine());
-Console.WriteLine("Введите количество столбцов: ");
-int b = int.Parse(Console.ReadLine());
-Console.WriteLine();
-int[,] array = Class1.GenRanArrx2(a,b);
-PrintArr(array);
-Console.WriteLine();
-
 int SearchMinString(int[,] arr){
+
+
     int[]sumArray = new int[arr.GetLength(0)];
     int sum = 0;
     int coun = 0;
@@ -62,4 +58,39 @@ int SearchMinString(int[,] arr){
     }
     return minCount;
 }
-Console.WriteLine("Минимальная строка имеет индекс " + SearchMinString(array));
+
+int[] CopyIntArrString(int[,] arr){
+    int[] array = new int[arr.GetLength(1)];
+    for(int x = 0; x < arr.GetLength(1); x++){
+        array[x] = arr[0,x];
+    }
+    return array;
+}
+
+char[] CopyCharArrString(char[,] arr){
+    char[] array = new char[arr.GetLength(1)];
+    for(int x = 0; x < arr.GetLength(1); x++){
+        array[x] = arr[0,x];
+    }
+    return array;
+}
+
+char[,] GenCharRanArrx2(int I, int J){
+    char[,] arr = new int[I,J];
+    for(int i = 0;i < arr.GetLength(0);i++){
+        for(int j = 0; j < arr.GetLength(1);j++){
+            Condole.WriteLine("Введите символ для" + i + "строки и " + j + "столбца");
+            
+            try{
+                arr[i,j] = Console.ReadLine();
+                break;
+            }
+            catch{
+                Console.WriteLine("Вы ввели неправильный символ. Попробуйте снова:");
+            }
+            Console.Clear();
+        }
+    }
+    return arr;
+}
+
